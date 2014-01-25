@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-ng-app="xbmc">
+<head>
+  <meta name="robots" content="NOINDEX, NOFOLLOW">
+  <meta charset="UTF-8">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <title>XBMC Home Theater</title>
+</head>
+<body data-ng-controller="rootController">
+	<div id="header">
+		<div id="commsErrorPanel" style="display: none;"></div>
+		<div id="navigation" data-ng-controller="navController">
+			<ul>
+            <li id="startButton" data-ng-click="pauseResumePlayer()"><img src="images/PausePlay.png"></img></li>
+            <li id="stopButton" data-ng-click="stopPlayer()"><img src="images/Stop.png"></img></li>
+				<li id="movieLibrary" data-ng-click="go('/movies')"><img src="images/movies.png"></img></li>
+				<li id="tvshowLibrary" data-ng-click="go('/tvshows')"><img src="images/television.png"></img></li>
+				<li id="musicLibrary" data-ng-click="go('/music')"><img src="images/music.png"></img></li>
+			</ul>
+		</div>
+	</div>
+	<div id="body">
+		<div data-ng-view></div>
+	</div>
+	<script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-route.js"></script>
+	<script src="scripts/xbmc.js"></script>
+   <div><iframe id="frame" src="{{request.url}}" width="0" height="0"></iframe></div>
+</body>
+
+</html>
