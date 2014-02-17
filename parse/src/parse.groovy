@@ -136,12 +136,18 @@ for (Node n : doc.tvshow)
    List eps = listify(n.episodedetails)
    int numeps = eps.size()
    eps.eachWithIndex { it, index ->
+	   epId = "${id}-E${index}"
+	   
+	   // for each episode I need to add to the details entry plus 
+	   // create a file with the plot/filename details.
+	   File epDetailsFile = new File(detailsDir,"${epId}.json")
+	   epDetailsFile.write("{ \"filenameandpath\": \"${sanitize(it.filenameandpath.text())}\", \"plot\": \"${sanitize(it.plot.text())}\" }")
+	   
       details += "{ \"title\": \"${sanitize(it.title.text())}\", " + 
-            "\"id\": \"T${id}-E${index}\", " +
-            "\"plot\": \"${sanitize(it.plot.text())}\", " + 
+            "\"id\": \"${epId}\", " +
             "\"season\" : ${it.season.text()}, " +
-            "\"episode\" : ${it.episode.text()}, " + 
-            "\"filenameandpath\" : \"${it.filenameandpath.text()}\" }${ index != numeps - 1 ? ',' : ''} "};
+            "\"episode\" : ${it.episode.text()} }${ index != numeps - 1 ? ',' : ''} "
+	};
 
    details += ']'
 

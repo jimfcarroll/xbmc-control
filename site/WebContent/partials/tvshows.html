@@ -3,7 +3,7 @@
 <div id="tvshowContainer">
 	<div id="tvshowList" class="mediaList">
 		<div data-ng-repeat="tvshow in tvshows | orderBy:stripThe">
-			<div id="tvshowEntry" class="mediaEntry" data-ng-click="tvshowDetails(tvshow,$event)">
+			<div id="tvshowEntry" class="mediaEntry" data-ng-click="selectTvShow(tvshow,$event)">
 				<div class="thumb">
 					<img src="data/images/{{ tvshow.id }}-thumb.jpg">
 				</div>
@@ -14,12 +14,12 @@
 			<div class="episodeList" data-xbmc-season="{{ tvshow.index }}"></div>
 		</div>
 	</div>
-	<div id="background" data-xbmc-back-img="data/images/{{ currentTvshow.id }}-bg.jpg" data-watch="currentTvshow.id"></div>
+	<div id="background" data-xbmc-back-img="data/images/{{ getSelectedTvShowId() }}-bg.jpg" data-watch="selected.id"></div>
 
 <div id="current" class="mediaDetails" data-ng-show="selected.id != ''">
-  <div class="mediaDetailsTitle" >{{ currentTvshow.title }}</div>
-  <div class="mediaDetailsPlot" >{{ currentTvshow.plot }}</div>
-  <div id="mediaDetailsBackground" data-xbmc-back-img="data/images/{{ currentTvshow.id }}-poster.jpg" data-watch="currentTvshow.id"></div>
+  <div class="mediaDetailsTitle" >{{ selected.title }}</div>
+  <div class="mediaDetailsPlot" >{{ selected.plot }}</div>
+  <div id="mediaDetailsBackground" data-xbmc-back-img="data/images/{{ getSelectedTvShowId() }}-poster.jpg" data-watch="selected.id"></div>
   <div id="mediaDetailsMat" ></div>
 </div>
 </div>

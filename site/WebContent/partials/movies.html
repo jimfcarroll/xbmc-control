@@ -3,7 +3,7 @@
 <div id="movieContainer">
 <div id="movieList" class="mediaList">
 		<div id="movieEntry" class="mediaEntry"
-			data-ng-click="mobile ? movieDetails(movie,$event) : startMovie(movie)"
+			data-ng-click="select(movie,$event)"
 			data-ng-repeat="movie in movies | orderBy:stripThe">
 			<div class="thumb">
 				<img src="data/images/{{ movie.id }}-thumb.jpg">
@@ -13,12 +13,12 @@
 			</div>
 		</div>
 	</div>
-<div id="background" data-xbmc-back-img="data/images/{{ currentMovie.id }}-bg.jpg" data-watch="currentMovie.id"></div>
+<div id="background" data-xbmc-back-img="data/images/{{ selected.id }}-bg.jpg" data-watch="selected.id"></div>
 
 <div id="current" class="mediaDetails" data-ng-show="selected.id != ''">
-  <div class="mediaDetailsTitle" >{{ currentMovie.title }}</div>
-  <div class="mediaDetailsPlot" >{{ currentMovie.plot }}</div>
-  <div id="mediaDetailsBackground" data-xbmc-back-img="data/images/{{ currentMovie.id }}-poster.jpg" data-watch="currentMovie.id"></div>
+  <div class="mediaDetailsTitle" >{{ selected.title }}</div>
+  <div class="mediaDetailsPlot" >{{ selected.plot }}</div>
+  <div id="mediaDetailsBackground" data-xbmc-back-img="data/images/{{ selected.id }}-poster.jpg" data-watch="selected.id"></div>
   <div id="mediaDetailsMat" ></div>
 </div>
 </div>

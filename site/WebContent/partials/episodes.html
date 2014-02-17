@@ -1,7 +1,8 @@
 
-<div class="episodeList" data-ng-show="tvshow.selected"
+<!-- data-ng-show="tvshow.isSelected" -->
+<div class="episodeList" 
 	data-ng-controller="tvEpisodeController">
-	<div class="episodeEntry" data-ng-click="episodeDetails(episode,$event)"
+	<div class="episodeEntry" data-ng-click="select(episode,$event)"
 		data-ng-repeat="episode in tvshow.episodes | orderBy:['season', 'episode']">
 		<p>Season {{ episode.season }}, Episode {{ episode.episode }} "{{ episode.title }}"</p>
 	</div>
