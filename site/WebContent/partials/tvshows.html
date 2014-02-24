@@ -14,12 +14,12 @@
 			<div class="episodeList" data-xbmc-season="{{ tvshow.index }}"></div>
 		</div>
 	</div>
-	<div id="background" data-xbmc-back-img="data/images/{{ getSelectedTvShowId() }}-bg.jpg" data-watch="selected.id"></div>
+	<div id="background" data-xbmc-back-img="data/images/{{ prevTvShow.id }}-bg.jpg" data-watch="prevTvShow.id"></div>
 
 <div id="current" class="mediaDetails" data-ng-show="selected.id != ''">
   <div class="mediaDetailsTitle" >{{ selected.title }}</div>
   <div class="mediaDetailsPlot" >{{ selected.plot }}</div>
-  <div id="mediaDetailsBackground" data-xbmc-back-img="data/images/{{ getSelectedTvShowId() }}-poster.jpg" data-watch="selected.id"></div>
+  <div id="mediaDetailsBackground" data-xbmc-back-img="data/images/{{ prevTvShow.id }}-poster.jpg" data-watch="prevTvShow.id"></div>
   <div id="mediaDetailsMat" ></div>
 </div>
 </div>

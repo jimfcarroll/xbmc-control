@@ -143,8 +143,6 @@ xbmcApp.config(
 // Tv Shows
 //===================================================================
 xbmcApp.controller('tvEpisodeController', function ($scope, $http) {
-	$scope.helloThere = 'hello there';
-	
 });
 
 xbmcApp.controller('tvController', function ($scope, $http) {
@@ -166,10 +164,6 @@ xbmcApp.controller('tvController', function ($scope, $http) {
 				$scope.prevTvShow = tvshow;
 			}
 		});
-	};
-	
-	$scope.getSelectedTvShowId = function()	{
-		return $scope.prevTvShow == null ? null : $scope.prevTvShow.id;
 	};
 	
 	$http.get('data/tvshows.json').
@@ -216,4 +210,5 @@ xbmcApp.directive('xbmcSeason', function() {
 		templateUrl: 'partials/episodes.html'
 	};
 });
+
 

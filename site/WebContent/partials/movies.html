@@ -2,9 +2,11 @@
 
 <div id="movieContainer">
 <div id="movieList" class="mediaList">
-		<div id="movieEntry" class="mediaEntry"
+		<div id="movieEntry" class="mediaEntry" 
 			data-ng-click="select(movie,$event)"
-			data-ng-repeat="movie in movies | orderBy:stripThe">
+			data-ng-repeat="movie in movies | orderBy:stripThe"
+			data-xbmc-selected="{{movie.id}}"
+			>
 			<div class="thumb">
 				<img src="data/images/{{ movie.id }}-thumb.jpg">
 			</div>
