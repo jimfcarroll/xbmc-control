@@ -60,7 +60,7 @@ xbmcApp.controller('rootController', function($scope, $http) {
 	$scope.selectedElement = null;
 	$scope.selectedMediaEntry = null;
 	
-	$scope.select = function(media,e,handler) {
+	$scope.select = function(media,e,scrollMe) {
 		// if we passed an event then we need to set the background color of the selected element.
 		// Yes, yes - this is a terrible thing to do from a controller.
 		var elem = null;
@@ -80,13 +80,9 @@ xbmcApp.controller('rootController', function($scope, $http) {
 			$scope.setSelected(media.id,data.filenameandpath, data.plot, media.title);
 			$scope.selectedMediaEntry = media;
 			$scope.selectedMediaEntry.isSelected = true;
-//			if (elem != null) {
-//				console.log(elem.position());
-//				var pos = elem.position().top + elem.parent().scrollTop();
-//				var scrl = { scrollTop : pos };
-//				console.log(scrl);
-//				elem.parent().animate(scrl, 1000);
-//			}
+			if (elem != null && scrollMe) {
+				$( elem[0] ).scrollintoview();
+			}
 		});
 	};
 });
@@ -149,7 +145,7 @@ xbmcApp.controller('tvController', function ($scope, $http) {
 	$scope.prevTvShow = null;
 	
 	$scope.selectTvShow = function(tvshow,e) {
-		$scope.select(tvshow,e);
+		$scope.select(tvshow,e,true);
 		
 		$http.get('data/details/' + tvshow.id + '.json').
 		success(function(data,status,headers,config) {
